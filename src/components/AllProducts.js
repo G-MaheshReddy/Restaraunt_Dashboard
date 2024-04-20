@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FcFullTrash } from "react-icons/fc";
+import { API_URL } from "../data/apiPath";
 
 const AllProducts = () => {
   const [productsList, setProductList] = useState([]);
@@ -12,7 +13,7 @@ const AllProducts = () => {
   const deleteProduct=async(productId)=>{
     try {
 
-      const response=await axios.delete(`http://localhost:4000/product/${productId}`)
+      const response=await axios.delete(`${API_URL}/product/${productId}`)
       if(response.status){
         setProductList(productsList.filter((product)=>product._id!==productId))
         alert('Product Deleted Successfully');
@@ -29,7 +30,7 @@ const AllProducts = () => {
     const firmId = localStorage.getItem("firmId");
     try {
       const result = await axios.get(
-        `http://localhost:4000/product/${firmId}/products`
+        `${API_URL}/product/${firmId}/products`
       );
       setProductList(result.data.products);
       console.log(result);
@@ -63,7 +64,7 @@ const AllProducts = () => {
                     <td>
                       {item.image ? (
                         <img style={{height:'50px',width:'50px'}}
-                          src={`http://localhost:4000/uploads/${item.image}`}
+                          src={`${API_URL}/uploads/${item.image}`}
                           alt={item.productName}
                         />
                       ):(

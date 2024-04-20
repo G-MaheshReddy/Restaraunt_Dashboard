@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import ClipLoader from "react-spinners/ClipLoader";
 
 import {useNavigate} from 'react-router-dom'
+import { API_URL } from "../../data/apiPath";
 
 //NOTE:-ADD FIRM TO VENDOR BASED ON JWT TOKEN
 
@@ -83,7 +84,7 @@ const AddFirm = () => {
       });
 
       const result = await axios.post(
-        "http://localhost:4000/firm/add-firm",
+        `${API_URL}/firm/add-firm`,
         formData,
         {
           headers: {

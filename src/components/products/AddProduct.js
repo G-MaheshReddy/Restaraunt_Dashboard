@@ -3,6 +3,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ClipLoader from "react-spinners/ClipLoader";
+import { API_URL } from "../../data/apiPath";
 
 const AddProduct = () => {
   const customtoken = JSON.parse(localStorage.getItem("userDetails"));
@@ -66,7 +67,7 @@ const AddProduct = () => {
       });
 
       const result = await axios.post(
-        `http://localhost:4000/product/add-product/${firmId}`,
+        `${API_URL}/product/add-product/${firmId}`,
         formData
       );
       setLoading(false);

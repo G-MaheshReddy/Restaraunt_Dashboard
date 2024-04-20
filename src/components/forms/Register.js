@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { API_URL } from "../../data/apiPath";
 import ClipLoader from "react-spinners/ClipLoader";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -33,7 +34,7 @@ const Register = () => {
     setLoading(true);
     try {
       const result = await axios.post(
-        "http://localhost:4000/vendor/register",
+        `${API_URL}/vendor/register`,
         formData
       );
       setLoading(false);

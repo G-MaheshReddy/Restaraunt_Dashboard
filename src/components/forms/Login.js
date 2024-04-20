@@ -25,7 +25,7 @@ const Login = () => {
 
     try {
       const result = await axios.post(
-        "http://localhost:4000/vendor/login",
+        `${API_URL}/vendor/login`,
         formData
       );
       setLoading(false);
@@ -43,7 +43,7 @@ const Login = () => {
       const vendorId=result.data.vendorId;
       console.log("checking for vendor-id",vendorId)
 
-      const vendorResult=await axios.get(`http://localhost:4000/vendor/single-vendor/${vendorId}`)
+      const vendorResult=await axios.get(`${API_URL}/vendor/single-vendor/${vendorId}`)
       if(vendorResult.status){
         const vendorRestId=vendorResult.data.vendorRestId;
         console.log("checking for vendorRestId",vendorRestId)
